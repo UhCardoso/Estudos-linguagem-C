@@ -1,24 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
 int fatorial(int numero);
-
 int main() {
+    setlocale(LC_ALL,"");
     int num = 0;
     int resultado = 0;
     int run = 1;
     int opcao = 1;
 
     while(run == 1) {
-        printf("Digite o numero a ser fatorado: ");
+        printf("Digite o número a ser fatorado: ");
         scanf("%d", &num);
 
         resultado = fatorial(num);
 
         system("cls");
-        printf("O fatorial de %d e igual a: %d \n", num, resultado);
+        printf("O fatorial de %d é igual a: %d \n", num, resultado);
 
-        printf("Voce deseja reiniciar o programa? [1]-sim [2]-nao ");
+        printf("Você deseja reiniciar o programa? [1]-sim [2]-não ");
         scanf("%d", &opcao);
         system("cls");
         if(opcao == 1) {

@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
+int finalizarPrograma(int run);
 int main() {
+    setlocale(LC_ALL,"");
     char palavra[50];
     char cripty[50];
     int opcao = 0;
     int run = 1;
-    int opcao2 = 1;
 
     while(run == 1) {
         printf("-------------------------------- \n");
@@ -20,7 +22,7 @@ int main() {
 
         if(opcao == 1) {
             //encriptar
-            printf("Digite a palavrar que voce quer encriptar: ");
+            printf("Digite a palavrar que você quer encriptar: ");
             scanf("%49s", &palavra);
             system("cls");
 
@@ -32,15 +34,7 @@ int main() {
                 printf("%c", cripty[i]);
             }
 
-            printf("\n Voce quer reiniciar o programa? [1]-sim [2]-nao ");
-            scanf("%d", &opcao2);
-
-            if(opcao2 == 2) {
-                run = 0;
-            } else {
-                run = 1;
-            }
-            system("cls");
+            run = finalizarPrograma(run);
 
         } else if(opcao == 2) {
             //desencriptar
@@ -56,15 +50,7 @@ int main() {
                 printf("%c", palavra[i]);
             }
 
-            printf("\n Voce quer reiniciar o programa? [1]-sim [2]-nao ");
-            scanf("%d", &opcao2);
-
-            if(opcao2 == 2) {
-                run = 0;
-            } else {
-                run = 1;
-            }
-            system("cls");
+            run = finalizarPrograma(run);
 
         } else if(opcao == 3) {
             //finalizar programa
@@ -73,9 +59,25 @@ int main() {
         } else {
             //mensagem erro e reiniciar programa
             system("cls");
-            printf("!!Opcao invalida \n");
+            printf("!!Opcao inválida \n");
             run = 1;
         }
     }
     return 0;
+}
+
+int finalizarPrograma(int run) {
+    int opcao2 = 0;
+
+    printf("\n Voce quer reiniciar o programa? [1]-sim [2]-não ");
+    scanf("%d", &opcao2);
+
+    if(opcao2 == 2) {
+        run = 0;
+    } else {
+        run = 1;
+    }
+    system("cls");
+
+    return (run);
 }
